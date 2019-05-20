@@ -19,7 +19,7 @@ RUN phpize
 RUN ./configure
 RUN make all -j 5
 RUN make install
-RUN echo 'extension=mongo.so' >> /etc/php.ini
+RUN echo 'extension=mongodb.so' >> /etc/php/php.ini
 # Redis
 RUN git clone https://github.com/nicolasff/phpredis.git --branch 4.2.0
 WORKDIR ./phpredis
@@ -27,5 +27,5 @@ RUN phpize
 RUN ./configure
 RUN make all -j 5
 RUN make install
-RUN echo 'extension=redis.so' >> /etc/php.ini
+RUN echo 'extension=redis.so' >> /etc/php/php.ini
 RUN sed -i 's/memory_limit = .*/memory_limit = 1G/g' /etc/php/php.ini
